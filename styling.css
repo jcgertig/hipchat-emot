@@ -10,28 +10,43 @@
     padding: 0 3px;
     height: 47px;
     margin-left: -1px;
-    -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
 }
 #emoticon_button ul li ul li a:hover { 
     background: #ECF1E7; 
-    padding-left: 9px;
+    padding-left: 5px;
     border: solid 1px #000;}
 #emoticon_button ul li ul li {
-    width: 330px; 
-    border: none; 
+    min-width: 330px;
+    border: none;
+    background: none;
+}
+#emoticon_button ul li ul li div {
+    max-height: 600px;
+    overflow: auto;
+    margin-left: 1.5px;
+    margin-right: 2px;
+    border-left: 2px outset #3c3c3c;
+    border-top: 2px outset #3c3c3c;
+    border-right: 2px outset #3c3c3c;
+    -webkit-border-radius: 15;
+    border-radius: 15;
     color: #B0BD97;  
     padding-top: 3px; 
     padding-bottom: 3px; 
     padding-left: 3px; 
-    padding-right: 3px; 
-    z-index:1;
+    padding-right: 3px;
     background-color: white;
     vertical-align: center;
     text-align: center;
 }
-#emoticon_button ul li ul li:hover {
+#emoticon_button ul li ul li div div{
+    color: #B0BD97;
+    background-color: white;
+    vertical-align: center;
+    text-align: center;
+    border: none;
 }
 #emoticon_button ul li ul li a { 
     font: 11px arial; 
@@ -56,7 +71,7 @@
     display:block;}
 #emoticon_button:hover ul li:hover ul li:hover ul { 
     position: absolute;
-    margin-left: 45px;
+    margin-left: 5px;
     margin-top: -22px;
     font: 10px;}
 #emoticon_button:hover ul li:hover ul { 
@@ -67,7 +82,6 @@
 #emoticon_button>ul>li:hover>ul { 
     bottom: 100%;
     left: 0;
-    border-bottom: 1px solid transparent
 }
 .emoticon {
     display: inline-block;
@@ -86,15 +100,20 @@
     z-index: -1;
 }
 #emotcontrol {
-    border-top: solid 1px black;
-}
-#lastemot {
-    margin-right: 20px;
-}
-#nextemot {
-    margin-left: 20px;
 }
 #emotpage {
     margin-top: 5px;
     margin-bottom: 5px;
+    line-height: 12px;
+    background: #6f6f6f url(/img/buttons/bg_silver_big.png) repeat-x;
+    padding: 0 3px;
+    height: 20px;
+    margin-left: -1px;
+    -webkit-border-radius: 4;
+    border-radius: 4;
+}
+#emotbottom {
+    background: none;
+    height: 20px;
+    width: 100%;
 }

@@ -22,9 +22,10 @@
 			} else {
 				text = text + " " + event.target.val();
 			}
-			console.log(text);
 			$("#message_input").val(text);
 		});
+
+		$("#emotbottom").css({"background-image": "url('" + chrome.extension.getURL("bottom.png") + "')"});
 	});
 };
 

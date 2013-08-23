@@ -11,5 +11,5 @@
         "js": ["content.js", "js/jquery-1.10.2.min.js"],
         "css": ["styling.css"]
     }],
-    "web_accessible_resources": ["input.html", "js/jquery-1.10.2.min.js"]
+    "web_accessible_resources": ["input.html", "js/jquery-1.10.2.min.js", "bottom.png"]
 }
