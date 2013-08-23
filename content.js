@@ -31,7 +31,13 @@
 		jQuery("#emotbottom").attr("src", chrome.extension.getURL("bottom.png"));
 
 		jQuery('#message_input').keypress(function(e){
-  		if (e.which == 13) {
+  		if (event.keyCode == 13 && event.shiftKey) {
+  			e.preventDefault();
+				var text = jQuery("#message_input").val();
+      	var caret = getCaret(document.getElementById("message_input"));
+      	text = text.substring(0,caret) + "\n" + text.substring(caret,text.length);
+      	jQuery("#message_input").val(text);
+			} else if (e.which == 13) {
   			e.preventDefault();
   			chrome.runtime.sendMessage({ command: "submit-chat" });
   		}
