@@ -1,5 +1,6 @@
 {
     "name": "HipChat Emot",
+    "description": "Add a list of available HipChat emoticons for easy use as well as some nice hot keys.",
     "version": "0.0.1",
     "manifest_version": 2,
     "permissions": [
