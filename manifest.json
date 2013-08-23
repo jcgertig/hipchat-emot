@@ -4,11 +4,13 @@
     "manifest_version": 2,
     "permissions": [
         "tabs",
+        "storage",
         "http://*.hipchat.com/*",
-        "https://*.hipchat.com/*"
+        "https://*.hipchat.com/*",
+        "http://hipchat-emoticons.nyh.name/"
     ],
     "content_scripts": [{
-        "matches": ["http://*.hipchat.com/*", "https://*.hipchat.com/*"],
+        "matches": ["http://*.hipchat.com/*", "https://*.hipchat.com/*", "http://hipchat-emoticons.nyh.name/"],
         "js": ["content.js", "js/jquery-1.10.2.min.js"],
         "css": ["styling.css"]
     }],

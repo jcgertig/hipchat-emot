@@ -1,48 +1,61 @@
-;function getFromStorage(func){
-	function callback(result){
-		func( result );
-	}
-	chrome.storage.sync.get(["emot_per_page"], callback);
-};
-
-;function dealWithCount( result ){
-
-};
+;var emoticons = null;
 
 ;window.onload = function(){
-	jQuery.noConflict()
-	var input = document.getElementsByClassName("input")[0].innerHTML = "";
-	jQuery(".input").load(chrome.extension.getURL("input.html"), function(){
-		jQuery(".emoticon").click(function(event){
-			var text = jQuery("#message_input").val();
-			var emot = event.target.getAttribute("data-shortcut");
-			if (event.target.getAttribute("data-shortcut")) {
-				emot = event.target.getAttribute("data-shortcut");
-			} else if (event.target.getAttribute("alt")) {
-				emot = event.target.getAttribute("alt");
-			} else {
-				emot = event.target.val();
+	jQuery.noConflict();
+	if (jQuery(".emoticons")[0] != undefined){
+		var emots = jQuery(".emoticons")[0].innerHTML;
+		emots = emots.replace(/<div class="shortcut">.*?<\/div>/gi, "");
+    emots = emots.replace(/\t/gi, '');
+    emots = emots.replace(/\r/gi, '');
+    emots = emots.replace(/\n/gi, '');
+    emots = emots.replace(/\s\s/gi, '');
+    chrome.runtime.sendMessage({ command: "set-emots", 'emots': emots });
+    jQuery(".emoticons")[0].innerHTML = "<h1><center>Got it!</center></h1>";
+
+	} else {
+		chrome.runtime.sendMessage({command: "get-emots"}, function(response) {
+    	emoticons = response.emots;
+  		if (emoticons !== null) { 
+				var input = document.getElementsByClassName("input")[0].innerHTML = "";
+				jQuery(".input").load(chrome.extension.getURL("input.html"), function(){
+					document.getElementById("allemots").innerHTML = emoticons;
+					jQuery(".emoticon").click(function(event){
+						var text = jQuery("#message_input").val();
+
+						var emot = event.target.getAttribute("data-shortcut");
+						if (event.target.getAttribute("data-shortcut")) {
+							emot = event.target.getAttribute("data-shortcut");
+						} else if (event.target.getAttribute("alt")) {
+							emot = event.target.getAttribute("alt");
+						} else {
+							emot = event.target.val();
+						}
+
+						var caret = getCaret(document.getElementById("message_input"));
+			      text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
+						jQuery("#message_input").val(text);
+						moveCaret(document.getElementById("message_input"), emot.length+1);
+					});
+
+					jQuery("#emotbottom").attr("src", chrome.extension.getURL("bottom.png"));
+
+					jQuery('#message_input').keypress(function(e){
+			  		if (event.keyCode == 13 && event.shiftKey) {
+			  			e.preventDefault();
+							var text = jQuery("#message_input").val();
+			      	var caret = getCaret(document.getElementById("message_input"));
+			      	text = text.substring(0,caret) + "\n" + text.substring(caret,text.length);
+			      	jQuery("#message_input").val(text);
+
+						} else if (e.which == 13) {
+			  			e.preventDefault();
+			  			chrome.runtime.sendMessage({ command: "submit-chat" });
+			  		}
+					});
+				});
 			}
-			var caret = getCaret(document.getElementById("message_input"));
-      text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
-			jQuery("#message_input").val(text);
 		});
-
-		jQuery("#emotbottom").attr("src", chrome.extension.getURL("bottom.png"));
-
-		jQuery('#message_input').keypress(function(e){
-  		if (event.keyCode == 13 && event.shiftKey) {
-  			e.preventDefault();
-				var text = jQuery("#message_input").val();
-      	var caret = getCaret(document.getElementById("message_input"));
-      	text = text.substring(0,caret) + "\n" + text.substring(caret,text.length);
-      	jQuery("#message_input").val(text);
-			} else if (e.which == 13) {
-  			e.preventDefault();
-  			chrome.runtime.sendMessage({ command: "submit-chat" });
-  		}
-		});
-	});
+	}
 };
 
 ;function getCaret(el) {
@@ -66,6 +79,13 @@
   return 0;
 };
 
-;var emots =[
-'<a class="emoticon" data-shortcut="(allthethings)" href="#(allthethings)"><img alt="(allthethings)" src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/allthethings.png" style="width:36px; height:30px" title="(allthethings)"><div class="shortcut">(allthethings)</div></a>','<a class="emoticon" data-shortcut="(android)" href="#(android)"><img alt="(android)" src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/android.png" style="width:25px; height:25px" title="(android)"><div class="shortcut">(android)</div></a>',
-];
+function moveCaret(el, dist) {
+    if (typeof el.selectionStart == "number") {
+        el.selectionStart = el.selectionEnd = el.selectionStart + dist;
+    } else if (typeof el.createTextRange != "undefined") {
+        el.focus();
+        var range = el.createTextRange();
+        range.collapse(false);
+        range.select();
+    }
+}
