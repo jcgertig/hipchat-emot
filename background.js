@@ -16,9 +16,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 });
 
 ;function getPage(){
+	alert("You are goning to be redirected to a page to get all hipchat emoticons. Please refresh that page then come back and refresh this page.")
 	var win=window.open('http://hipchat-emoticons.nyh.name', '_blank');
   win.focus();
-	chrome.tabs.getSelected(null, function(tab){
-  	chrome.tabs.reload(tab.id);
-  });
 };
