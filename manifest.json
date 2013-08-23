@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "manifest_version": 2,
     "permissions": [
+        "tabs",
         "http://*.hipchat.com/*",
         "https://*.hipchat.com/*"
     ],
@@ -11,5 +12,9 @@
         "js": ["content.js", "js/jquery-1.10.2.min.js"],
         "css": ["styling.css"]
     }],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
     "web_accessible_resources": ["input.html", "js/jquery-1.10.2.min.js", "bottom.png"]
 }
