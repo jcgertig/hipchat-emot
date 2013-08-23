@@ -18,5 +18,8 @@
         "scripts": ["background.js"],
         "persistent": true
     },
+  "icons": {
+    "25": "sweetjesus.png"
+  },
     "web_accessible_resources": ["input.html", "js/jquery-1.10.2.min.js", "bottom.png"]
 }
