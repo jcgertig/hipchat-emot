@@ -25,15 +25,15 @@
 #emoticon_button ul li ul li div {
     max-height: 600px;
     overflow: auto;
-    margin-left: 0.35px;
-    margin-right: 0.55px;
+    margin-left: 0.48px;
+    margin-right: 0.5px;
     border-left: 3px outset #3c3c3c;
-    border-top: 3px outset -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff), color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;;
-    border-right: 3px outset #3c3c3c;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top: 3px outset #3c3c3c;
+    border-right: 3px outset #262626;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     color: #B0BD97;  
     padding-top: 3px; 
     padding-bottom: 3px; 
@@ -42,6 +42,21 @@
     background-color: white;
     vertical-align: center;
     text-align: center;
+}
+#emoticon_button ::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+#emoticon_button ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+ 
+#emoticon_button ::-webkit-scrollbar-thumb {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 #emoticon_button ul li ul li div div{
     color: #B0BD97;
