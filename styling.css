@@ -48,6 +48,11 @@
     text-align: center;
     border: none;
 }
+#emoticon_button ul li ul li img{
+    vertical-align: center;
+    text-align: center;
+    border: none;
+}
 #emoticon_button ul li ul li a { 
     font: 11px arial; 
     font-weight: normal; 

@@ -25,7 +25,7 @@
 			$("#message_input").val(text);
 		});
 
-		$("#emotbottom").css({"background-image": "url('" + chrome.extension.getURL("bottom.png") + "')"});
+		$("#emotbottom").attr("src", chrome.extension.getURL("bottom.png"));
 	});
 };
 
