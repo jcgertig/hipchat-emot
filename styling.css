@@ -1,0 +1,102 @@
+#emoticon_button * { 
+    padding: 0; 
+    margin: 0; 
+    font: 12px georgia; 
+    list-style-type:none;}
+#emoticon_button { 
+    float: left;
+    line-height: 10px;
+    background: #6f6f6f url(/img/buttons/bg_silver_big.png) repeat-x;
+    padding: 0 3px;
+    height: 47px;
+    margin-left: -1px;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+#emoticon_button ul li ul li a:hover { 
+    background: #ECF1E7; 
+    padding-left: 9px;
+    border: solid 1px #000;}
+#emoticon_button ul li ul li {
+    width: 330px; 
+    border: none; 
+    color: #B0BD97;  
+    padding-top: 3px; 
+    padding-bottom: 3px; 
+    padding-left: 3px; 
+    padding-right: 3px; 
+    z-index:1;
+    background-color: white;
+    vertical-align: center;
+    text-align: center;
+}
+#emoticon_button ul li ul li:hover {
+}
+#emoticon_button ul li ul li a { 
+    font: 11px arial; 
+    font-weight: normal; 
+    font-variant: small-caps; 
+    padding-top: 3px; 
+    padding-bottom: 3px;}
+#emoticon_button ul li {
+    float: left; 
+    font-weight: bold;}
+#emoticon_button ul li a { 
+    font-weight: bold;
+    padding: 15px 10px;}
+#emoticon_button li{ 
+    position: relative; 
+    float: left;}
+#emoticon_button ul li ul, #emoticon_button:hover ul li ul, #emoticon_button:hover ul li:hover ul li ul{ 
+    display: none;
+    list-style-type: none; 
+    width: 50px;}
+#emoticon_button:hover ul, #emoticon_button:hover ul li:hover ul, #emoticon_button:hover ul li:hover ul li:hover ul { 
+    display:block;}
+#emoticon_button:hover ul li:hover ul li:hover ul { 
+    position: absolute;
+    margin-left: 45px;
+    margin-top: -22px;
+    font: 10px;}
+#emoticon_button:hover ul li:hover ul { 
+    position: absolute;
+    margin-top: 1px;
+    font: 10px;
+}
+#emoticon_button>ul>li:hover>ul { 
+    bottom: 100%;
+    left: 0;
+    border-bottom: 1px solid transparent
+}
+.emoticon {
+    display: inline-block;
+    min-width: 50px;
+    height: 50px;
+    padding: 8px;
+    text-decoration: none;
+}
+.emoticon:hover {
+    background-color: #fff;
+}
+.emoticon img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;  
+    z-index: -1;
+}
+#emotcontrol {
+    border-top: solid 1px black;
+}
+#lastemot {
+    margin-right: 20px;
+}
+#nextemot {
+    margin-left: 20px;
+}
+#emotpage {
+    padding-top: 20px;
+}
