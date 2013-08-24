@@ -18,6 +18,8 @@
   		if (emoticons !== null) { 
 				var input = document.getElementsByClassName("input")[0].innerHTML = "";
 				jQuery(".input").load(chrome.extension.getURL("input.html"), function(){
+					jQuery("#allemots").css("height", window.innerHeight/2);
+
 					document.getElementById("allemots").innerHTML = emoticons;
 					jQuery(".emoticon").click(function(event){
 						var text = jQuery("#message_input").val();
@@ -32,7 +34,7 @@
 						}
 
 						var caret = getCaret(document.getElementById("message_input"));
-			      text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
+			      		text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
 						jQuery("#message_input").val(text);
 						moveCaret(document.getElementById("message_input"), emot.length+1);
 					});
