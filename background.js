@@ -21,14 +21,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
   } else if (request.command == "get-emots"){
     //Not sure why the alert is needed it is like it lets the sendResponce out of the function
     alert(chrome.storage.sync.get(null, function(result){
-      if (!result || result == "{}") {
+      if (!result) {
         getPage();
       } else {
         Object.keys(result).forEach(function(entry) {
           mData.push(result[entry]);
         });
       }
-      sendResponse({emots: mData.join("}|+|{")});
+      sendResponse({emots: mData.join("|≈|")});
     }));
   } 
 });

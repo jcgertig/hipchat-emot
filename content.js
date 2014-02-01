@@ -1,6 +1,6 @@
-;var emoticons = null;
+var emoticons = null;
 
-;window.onload = function(){
+window.onload = function(){
 	jQuery.noConflict();
 	if (jQuery(".emoticons")[0] != undefined){
 		var index = 0;
@@ -30,7 +30,7 @@
 				jQuery(".input").load(chrome.extension.getURL("input.html"), function(){
 					jQuery("#allemots").css("height", window.innerHeight/2);
 
-					emoticons.split("}|+|{").forEach(function(entry) {
+					emoticons.split("|≈|").forEach(function(entry) {
 						var emot = JSON.parse(entry);
 			        	document.getElementById("allemots").innerHTML += 
 			        	("<a class='emoticon' data-shortcut=\"" + emot.alt + "\" href='#'>" +
