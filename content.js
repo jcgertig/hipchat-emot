@@ -24,31 +24,37 @@
 		jQuery(".emoticons")[0].innerHTML = "<h1><center>Got it!</center></h1>";
 	} else {
 		chrome.runtime.sendMessage({command: "get-emots"}, function(response) {
-			alert(" " + response.emots);
     		emoticons = response.emots;
   			if (emoticons !== null) { 
 				var input = document.getElementsByClassName("input")[0].innerHTML = "";
 				jQuery(".input").load(chrome.extension.getURL("input.html"), function(){
 					jQuery("#allemots").css("height", window.innerHeight/2);
 
-					document.getElementById("allemots").innerHTML = " " + emoticons;
-					// jQuery(".emoticon").click(function(event){
-					// 	var text = jQuery("#message_input").val();
+					emoticons.split("}|+|{").forEach(function(entry) {
+						var emot = JSON.parse(entry);
+			        	document.getElementById("allemots").innerHTML += 
+			        	("<a class='emoticon' data-shortcut=\"" + emot.alt + "\" href='#'>" +
+        					"<img alt=\"" + emot.alt + "\" src=\"" + emot.src + "\" style=\"" + emot.style + "\" title=\"" + emot.alt + "\">" +
+      					"</a>");
+			        });
+					
+					jQuery(".emoticon").click(function(event){
+						var text = jQuery("#message_input").val();
 
-					// 	var emot = event.target.getAttribute("data-shortcut");
-					// 	if (event.target.getAttribute("data-shortcut")) {
-					// 		emot = event.target.getAttribute("data-shortcut");
-					// 	} else if (event.target.getAttribute("alt")) {
-					// 		emot = event.target.getAttribute("alt");
-					// 	} else {
-					// 		emot = event.target.val();
-					// 	}
+						var emot = event.target.getAttribute("data-shortcut");
+						if (event.target.getAttribute("data-shortcut")) {
+							emot = event.target.getAttribute("data-shortcut");
+						} else if (event.target.getAttribute("alt")) {
+							emot = event.target.getAttribute("alt");
+						} else {
+							emot = event.target.val();
+						}
 
-					// 	var caret = getCaret(document.getElementById("message_input"));
-					//	text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
-					// 	jQuery("#message_input").val(text);
-					// 	moveCaret(document.getElementById("message_input"), emot.length+1);
-					// });
+						var caret = getCaret(document.getElementById("message_input"));
+						text = text.substring(0,caret)+ " " + emot + " " + text.substring(caret,text.length);
+						jQuery("#message_input").val(text);
+						moveCaret(document.getElementById("message_input"), emot.length+1);
+					});
 
 					jQuery("#emotbottom").attr("src", chrome.extension.getURL("bottom.png"));
 
