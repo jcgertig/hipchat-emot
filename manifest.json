@@ -5,13 +5,14 @@
     "manifest_version": 2,
     "permissions": [
         "tabs",
+        "storage",
         "http://*.hipchat.com/*",
         "https://*.hipchat.com/*",
         "http://hipchat-emoticons.nyh.name/"
     ],
     "content_scripts": [{
         "matches": ["http://*.hipchat.com/*", "https://*.hipchat.com/*", "http://hipchat-emoticons.nyh.name/"],
-        "js": ["content.js", "js/jquery-2.1.0.min.js", "js/base64.js"],
+        "js": ["content.js", "js/jquery-2.1.0.min.js"],
         "css": ["styling.css"]
     }],
     "background": {
@@ -21,5 +22,5 @@
   "icons": {
     "25": "sweetjesus.png"
   },
-    "web_accessible_resources": ["input.html", "js/jquery-2.1.0.min.js", "js/base64.js", "bottom.png"]
+    "web_accessible_resources": ["input.html", "js/jquery-2.1.0.min.js", "bottom.png"]
 }

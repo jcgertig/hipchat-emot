@@ -3,15 +3,25 @@
 ;window.onload = function(){
 	jQuery.noConflict();
 	if (jQuery(".emoticons")[0] != undefined){
-		var emots = jQuery(".emoticons")[0].innerHTML;
-		emots = emots.replace(/<div class="shortcut">.*?<\/div>/gi, "");
-    emots = emots.replace(/\t/gi, '');
-    emots = emots.replace(/\r/gi, '');
-    emots = emots.replace(/\n/gi, '');
-    emots = emots.replace(/\s\s/gi, '');
-    chrome.runtime.sendMessage({ command: "set-emots", 'emots': emots });
-    jQuery(".emoticons")[0].innerHTML = "<h1><center>Got it!</center></h1>";
-
+		var index = 0;
+		var formated_data = [];
+		jQuery(".emoticons").each(function(){
+			if (index == 0){
+				jQuery(this).children(".emoticon").each(function(){
+					var emot = {};
+					jQuery(this).children("img").each(function(){
+						emot["alt"] = jQuery(this).attr("alt");
+						emot["src"] = jQuery(this).attr("src");
+						emot["style"] = jQuery(this).attr("style")
+						formated_data.push(JSON.stringify(emot));
+					});
+				});
+				index += 1;
+			}
+		});
+		
+		chrome.runtime.sendMessage({ command: "set-emots", 'emots': formated_data });
+		jQuery(".emoticons")[0].innerHTML = "<h1><center>Got it!</center></h1>";
 	} else {
 		chrome.runtime.sendMessage({command: "get-emots"}, function(response) {
     	emoticons = response.emots;
