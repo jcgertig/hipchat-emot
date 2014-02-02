@@ -13,7 +13,7 @@ window.onload = function(){
 						emot.alt = jQuery(this).attr("alt");
 						emot.src = jQuery(this).attr("src");
 						emot.style = jQuery(this).attr("style")
-						formated_data.push(JSON.stringify(emot));
+						formated_data.push(emot);
 					});
 				});
 				index += 1;
@@ -31,7 +31,7 @@ window.onload = function(){
 					jQuery("#allemots").css("height", window.innerHeight/2);
 
 					emoticons.split("|≈|").forEach(function(entry) {
-						var emot = JSON.parse(entry);
+						var emot = JSON.parse(JSON.parse(entry));
 			        	document.getElementById("allemots").innerHTML += 
 			        	("<a class='emoticon' data-shortcut=\"" + emot.alt + "\" href='#'>" +
         					"<img alt=\"" + emot.alt + "\" src=\"" + emot.src + "\" style=\"" + emot.style + "\" title=\"" + emot.alt + "\">" +
