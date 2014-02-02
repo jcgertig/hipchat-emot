@@ -2,6 +2,7 @@ hipchat-emot
 ============
 
 Chrome extension for HipChat to add an emote list to the page 
+<a href="https://chrome.google.com/webstore/detail/hipchat-emot/bbnfjminggbnmhkhjpnadlgpnjchbppa" >It is in the chrome store :)</a>
 
 Install
 =======
