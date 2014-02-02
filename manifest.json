@@ -1,7 +1,9 @@
 {
     "name": "HipChat Emot",
+    "short_name": "HipChat Emot",
     "description": "Add a list of available HipChat emoticons for easy use as well as some nice hot keys.",
-    "version": "0.1.0",
+    "version": "0.1.1",
+    "author": "Jonathan Gertig",
     "manifest_version": 2,
     "permissions": [
         "tabs",
@@ -19,8 +21,8 @@
         "scripts": ["background.js"],
         "persistent": true
     },
-  "icons": {
-    "25": "sweetjesus.png"
-  },
+    "icons": {
+        "25": "sweetjesus.png"
+    },
     "web_accessible_resources": ["input.html", "js/jquery-2.1.0.min.js", "bottom.png"]
 }

@@ -31,7 +31,7 @@ window.onload = function(){
 					jQuery("#allemots").css("height", window.innerHeight/2);
 
 					emoticons.split("|≈|").forEach(function(entry) {
-						var emot = JSON.parse(JSON.parse(entry));
+						var emot = JSON.parse(entry);
 			        	document.getElementById("allemots").innerHTML += 
 			        	("<a class='emoticon' data-shortcut=\"" + emot.alt + "\" href='#'>" +
         					"<img alt=\"" + emot.alt + "\" src=\"" + emot.src + "\" style=\"" + emot.style + "\" title=\"" + emot.alt + "\">" +
@@ -67,7 +67,7 @@ window.onload = function(){
 					      	jQuery("#message_input").val(text);
 						} else if (e.which == 13) {
 				  			e.preventDefault();
-				  			chrome.runtime.sendMessage({ command: "submit-chat" });
+				  			chrome.runtime.sendMessage({ command: "$('#send_message_button').click();" });
 				  		}
 					});
 				});
