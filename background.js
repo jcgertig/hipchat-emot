@@ -7,11 +7,9 @@ function getPage(){
 var getEmots = function(callback){
     chrome.storage.sync.get(null, function(result){
       if (!result) {
-        alert("Oh no!");
         getPage();
       } else {
         Object.keys(result).forEach(function(entry) {
-          alert(entry + " -> " + result[entry]);
           mData.push(result[entry]);
         });
       }
