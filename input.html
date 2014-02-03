@@ -1,5 +1,5 @@
 <form name="messageForm" onsubmit="chat.send_message(); return false;">
-	<table width="100%" cellspacing="0">
+    <table width="100%" cellspacing="0">
 		<tbody>
 			<tr>
 				<td id="upload_ui" width="1%" style="display: none;"></td>
@@ -9,24 +9,22 @@
 					</div>
 				</td>
 				<td width="1%">
-					<button class="silver          " id="emoticon_button">
+					<button class="silver" id="emoticon_button">
 						<ul>
-							<li><img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/hipchat.png" width="25" height="25">
+							<li>
+								<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/hipchat.png" width="25" height="25">
 								<ul>
-						      <li>
-						      	<div id="allemots">
-						      	</div>
-						      	<img id="emotbottom"></img>
-						    	</li>
+									<li>
+										<div id="allemots"></div>
+										<img id="emotbottom"></img>
+									</li>
 								</ul>
 							</li>
 						</ul>
 					</button>
 				</td>
 				<td width="1%">
-					<button class="silver          " id="upload_button">
-						<img src="/img/chat/paperclip.png" width="16" height="16">
-					</button>
+					<button class="silver" id="upload_button"><img src="/img/chat/paperclip.png" width="16" height="16"></button>
 				</td>
 				<td width="1%">
 					<input class="silver" id="send_message_button" type="submit" onclick="chat.send_message()" value="Send">
